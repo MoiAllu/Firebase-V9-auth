@@ -1,14 +1,13 @@
+import { useAuth } from "./auth-context/AuthContext";
+
 const Login = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  
+  const { logIn } = useAuth();
+
   const submitValue = (event) => {
     event.preventDefault();
-    const frmdetails = {
-      Email: email,
-      Password: password,
-    };
-    console.log(frmdetails);
+    logIn(email, password);
   };
   return (
     <Fragment>
@@ -36,9 +35,10 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
+            <br/>
+            <Button className="w-100" type='submit'>Submit</Button>
           </Form>
         </Card.Body>
-        <Button className="w-100">Submit</Button>
       </Card>
       <div className="w-100 text-center mt-2">
         Already have an account? Log in
