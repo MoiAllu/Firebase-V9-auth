@@ -1,4 +1,4 @@
-const SignupPage=()=>{
-    return
-}
+const SignupPage = () => {
+  return;
+};
 export default SignupPage;
