@@ -1,18 +1,36 @@
 import { useAuth } from "./auth-context/AuthContext";
+import { Fragment, useState } from "react";
+import { Card, Button, Form, Alert } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
 
 const Login = () => {
+  // const history = useHistory();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState();
   const { logIn } = useAuth();
-
-  const submitValue = (event) => {
+  const { currentUser } = useAuth();
+  const submitValue = async (event) => {
     event.preventDefault();
-    logIn(email, password);
+    try {
+      setError("");
+      setLoading(true);
+      await logIn(email, password);
+      // history.push("/");
+      // await logIn(email, password).then(history.push("/"));
+    } catch {
+      setError("Opps! Error, Unable to Sign In");
+    }
+    setLoading(false);
   };
   return (
     <Fragment>
       <Card>
-        <h2 className="text-center mb-4">Sign Up</h2>
+        <h2 className="text-center mb-4">Log in</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
+
+        {currentUser ? currentUser.email : ""}
         <Card.Body>
           <Form onSubmit={submitValue}>
             <Form.Group>
@@ -35,13 +53,16 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <br/>
-            <Button className="w-100" type='submit'>Submit</Button>
+            <br />
+            <Button disabled={loading} className="w-100" type="submit">
+              LogIn
+            </Button>
           </Form>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Already have an account? Log in
+        Forgot Password? <Link to="forgotpassword">Reset</Link> Create an
+        Account? <Link to="/signup">Sign Up</Link>
       </div>
     </Fragment>
   );

@@ -1,7 +1,10 @@
 import { Fragment, useState } from "react";
 import { Card, Button, Form, Alert } from "react-bootstrap";
 import { useAuth } from "./auth-context/AuthContext";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 const Signup = () => {
+  // const history=useHistory();
   const [fName, setfName] = useState("");
   const [lName, setlName] = useState("");
   const [phone, setPhone] = useState("");
@@ -12,7 +15,7 @@ const Signup = () => {
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
-  const submitHandler = async(event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     if (email !== confirmemail) {
       return setError("Email doesn't match");
@@ -21,6 +24,7 @@ const Signup = () => {
       setError("");
       setLoading(true);
       await signUp(email, password);
+      // history.push('/');
     } catch {
       setError("Opps! Error, not SignUp ");
     }
@@ -105,15 +109,15 @@ const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <br/>
+            <br />
             <Button disabled={loading} className="w-100" type="submit">
-              Submit
+              SignUp
             </Button>
           </Form>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Already have an account? Log in
+        Already have an account? <Link to="/login">Login</Link>
       </div>
     </Fragment>
   );
