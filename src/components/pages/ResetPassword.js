@@ -1,18 +1,31 @@
+import { async } from "@firebase/util";
 import { useState } from "react";
-import { Card, Button, Form } from "react-bootstrap";
+import { Card, Button, Form, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useAuth } from "../auth-context/AuthContext";
 
-const ForgotPass = () => {
+const ResetPassword = () => {
+  const { passReset } = useAuth();
   const [email, setEmail] = useState();
-  const submitHandler = (event) => {
+  const [message, setMessage] = useState();
+  const [error, setError] = useState();
+  const submitHandler = async (event) => {
     event.preventDefault();
+    try {
+      setMessage("");
+      setError("");
+      await passReset(email);
+      setMessage("Check inbox for further instruction");
+    } catch {
+      setError("Unable to reset password");
+    }
   };
   return (
     <>
       <Card>
         <h2 className="text-center mb-4">Reset Password</h2>
-        {/* {error && <Alert variant="danger">{error}</Alert>} */}
-        {/* {currentUser ? currentUser.email : ""} */}
+        {error && <Alert variant="danger">{error}</Alert>}
+        {message && <Alert variant="success">{message}</Alert>}
         <Card.Body>
           <Form onSubmit={submitHandler}>
             <Form.Group>
@@ -42,4 +55,4 @@ const ForgotPass = () => {
     </>
   );
 };
-export default ForgotPass;
+export default ResetPassword;

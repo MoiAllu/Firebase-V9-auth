@@ -17,6 +17,7 @@ const HomePage = () => {
     }
   };
   const passwordChanger = (event) => {
+    // event.preventDefault();
     history.push("/changepassword");
   };
 

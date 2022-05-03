@@ -61,8 +61,8 @@ const Login = () => {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Forgot Password? <Link to="forgotpassword">Reset</Link> Create an
-        Account? <Link to="/signup">Sign Up</Link>
+        Forgot Password? <Link to="/reset">Reset</Link> Create an Account?
+        <Link to="signup">Sign Up</Link>
       </div>
     </Fragment>
   );

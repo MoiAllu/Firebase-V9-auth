@@ -5,9 +5,9 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Login from "./Login";
 import ChangePass from "./pages/ChangePass";
-import { useState } from "react";
 import { useAuth } from "./auth-context/AuthContext";
-import ForgotPass from "./pages/ForgotPass";
+
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   const { islogin } = useAuth();
@@ -19,22 +19,23 @@ function App() {
     >
       <div className="w-100" style={{ maxWidth: "400px" }}>
         <Switch>
-          <Route path="forgotpassword" exact>
-            {!islogin && <ForgotPass />}
+          {/* <Route path="/reset">
+            <ResetPassword />
+          </Route> */}
+          <Route path="/reset" exact>
+            {!islogin && <ResetPassword />}
           </Route>
           <Route path="/" exact>
             {islogin ? <HomePage /> : <Login />}
           </Route>
           <Route path="/signup" exact>
-            {!islogin ? <Signup /> : <HomePage />}
+            {!islogin ? <Signup /> : <Redirect to="/" />}
           </Route>
 
           <Route path="/changepassword" exact>
-            {islogin ? <ChangePass /> : <Login />}
+            {islogin ? <ChangePass /> : <Redirect to="/" />}
           </Route>
-          <Route path="/login">
-            {islogin ? <Redirect to="/" /> : <Login />}
-          </Route>
+          <Route path="/login">{islogin && <Redirect to="/" />}</Route>
           <Route path="*">
             <Redirect to="/" />
           </Route>
