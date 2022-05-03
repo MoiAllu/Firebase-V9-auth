@@ -117,7 +117,7 @@ const Signup = () => {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/">Login</Link>
+        Already have an account? <Link to="/login">Login</Link>
       </div>
     </Fragment>
   );

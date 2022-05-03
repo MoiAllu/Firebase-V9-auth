@@ -22,20 +22,19 @@ function App() {
           {/* <Route path="/reset">
             <ResetPassword />
           </Route> */}
-          <Route path="/reset" exact>
-            {!islogin && <ResetPassword />}
-          </Route>
           <Route path="/" exact>
             {islogin ? <HomePage /> : <Login />}
           </Route>
-          <Route path="/signup" exact>
+          <Route path="/signup">
             {!islogin ? <Signup /> : <Redirect to="/" />}
           </Route>
-
-          <Route path="/changepassword" exact>
+          <Route path="/login">
+            {islogin ? <Redirect to="/" /> : <Login />}
+          </Route>
+          <Route path="/reset">{!islogin && <ResetPassword />}</Route>
+          <Route path="/changepassword">
             {islogin ? <ChangePass /> : <Redirect to="/" />}
           </Route>
-          <Route path="/login">{islogin && <Redirect to="/" />}</Route>
           <Route path="*">
             <Redirect to="/" />
           </Route>
