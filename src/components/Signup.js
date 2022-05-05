@@ -2,12 +2,9 @@ import { Fragment, useState } from "react";
 import { Card, Button, Form, Alert } from "react-bootstrap";
 import { useAuth } from "./auth-context/AuthContext";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+
 const Signup = () => {
   // const history=useHistory();
-  const [fName, setfName] = useState("");
-  const [lName, setlName] = useState("");
-  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmemail, setConfirmEmail] = useState("");
@@ -49,36 +46,6 @@ const Signup = () => {
         {error && <Alert variant="danger">{error}</Alert>}
         <Card.Body>
           <Form onSubmit={submitHandler}>
-            <Form.Group>
-              <Form.Label name="firstname">First Name </Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="firstname"
-                placeholder="First Name"
-                onChange={(e) => setfName(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label name="lastname"> Last Name </Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="lastname"
-                placeholder="Last Name"
-                onChange={(e) => setlName(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label name="phone">Phone </Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="phone"
-                placeholder="Phone"
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </Form.Group>
             <Form.Group>
               <Form.Label name="email">Email </Form.Label>
               <Form.Control
