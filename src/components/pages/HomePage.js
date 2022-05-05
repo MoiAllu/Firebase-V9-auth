@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../auth-context/AuthContext";
-
+import { withRouter } from "react-router-dom";
 const HomePage = () => {
   const { logOut } = useAuth();
   const { currentUser } = useAuth();
@@ -43,4 +43,5 @@ const HomePage = () => {
     </Fragment>
   );
 };
-export default HomePage;
+// export default HomePage;
+export default withRouter(HomePage);

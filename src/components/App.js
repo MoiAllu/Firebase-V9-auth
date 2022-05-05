@@ -38,6 +38,11 @@ function App() {
           <Route path="*">
             <Redirect to="/" />
           </Route>
+          {/* <Route exact path="/" component={HomePage} />
+          <Route path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/changepassword" component={ChangePass} />
+          <Route exact path="/reset" component={ResetPassword} /> */}
         </Switch>
       </div>
     </Container>
