@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     // const isLoginUser=!currentUser;
     // setisLogin(isLoginUser);
     return unsubscribe;
-  }, []);
+  });
   console.log(islogin);
   const contextValue = {
     currentUser,

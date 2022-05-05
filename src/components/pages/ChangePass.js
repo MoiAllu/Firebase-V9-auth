@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../auth-context/AuthContext";
 
 const ChangePass = () => {
-  const { passUp, logOut } = useAuth();
+  const { passUp } = useAuth();
   const history = useHistory();
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState();
@@ -17,7 +17,6 @@ const ChangePass = () => {
       await passUp(password);
       setMessage("Successfully change Passowrd");
       history.push("/");
-      //   await logOut();
     } catch {
       setError("Unable to change the Passowrd");
     }

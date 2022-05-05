@@ -1,7 +1,7 @@
 import { useAuth } from "./auth-context/AuthContext";
 import { Fragment, useState } from "react";
 import { Card, Button, Form, Alert } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   // const history = useHistory();
