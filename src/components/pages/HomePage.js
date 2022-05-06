@@ -25,7 +25,7 @@ const HomePage = () => {
     <Fragment>
       <Card>
         <h2 className="text-center mb-4">Home page</h2>
-        <h5>User: {currentUser.email}</h5>
+        <h5 className="text-center mb-4"> User: {currentUser.email}</h5>
         <Card.Body>
           <Form>
             <Button onClick={passwordChanger} className="w-100" type="submit">
